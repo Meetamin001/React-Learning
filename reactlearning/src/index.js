@@ -1,21 +1,52 @@
-// var React = require('react'); old verson of javascript that browser understand
-import React from 'react'; // ES6 verson of javascript which browser does not understand, BABEL compile it and convert it into old verson
-// var ReactDOM = require('react-dom');
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-//1st method to display - React with use of JSX
+// if you want to use multiple JSX you have to use <div>
+//because render only accept 1 JSX element
+ReactDOM.render(
+    <div>
+        <h1> with div H1</h1>
+        <p>para</p>
+        <h2>h2 JSX</h2>
+    </div>,
+    document.getElementById("root")
+);
 
-// ReactDOM.render('what to display','where to display','callback func');
-ReactDOM.render(<h1> This is React code HTML Tag called as JSX </h1>, document.getElementById('root'));
-//<h1> tag is not called HTML here, it is called JSX - javaScript Extension or XML
-// you must need 'react' to complile JSX and create elements.
+//const arr = ['vinod','abc','dfrc'] array define like this
+//if you don't want to use <div> you can use array too.
 
-// 2nd method- old version javascript which browser understand
-// ReactDOM.render( /*#__PURE__*/React.createElement("h1", null, " Hello World! "),document.getElementById('root'));
-//--- Babel code conversion
+ReactDOM.render(
+    [
+        <h1>with array H1</h1>,
+        <p>para</p>,
+        <h2>h2 JSX</h2>
+    ],
+    document.getElementById("root")
+);
 
-//3rd method - Pure javaScript
- var h1 = document.createElement('h1');
- h1.innerHTML = "This is Pure JavaScript";
-document.getElementById("root").appendChild(h1); //--- no BABEL no react, it is pure javaScript
+// ============== React Frafment ===========
 
+//if you use <div> it will creact another tag inside you div which is on HTML page
+// that's why we use fragment
+ReactDOM.render(
+    <React.Fragment>
+        <h1> with div H1</h1>
+        <p>para</p>
+        <h2>h2 JSX</h2>
+    </React.Fragment>,
+    document.getElementById("root")
+);
+// it is usefull because it use less memory,makes application faster
+
+// Syntactic suger form of Fragment
+ReactDOM.render(
+    <>
+        <h1> with div H1</h1>
+        <p>para</p>
+        <h2>h2 JSX</h2>
+    </>,
+    document.getElementById("root")
+);
+// if you just use <> it will be considered as fragment
+
+// ==============End of React Frafment ===========

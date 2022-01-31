@@ -3,70 +3,68 @@ import ReactDOM from "react-dom";
 
 import "./index.css" // external css
 
-const fname = "Vonod";
-const img2 = "https://picsum.photos/id/237/200/300"
-const img3 = "https://picsum.photos/200/300/?blur"
 
-const link = "https://picsum.photos/"
+//==================== my way start ======================
+/*
+// new Date(year,month,day,hours,minutes,second)
+const time = new Date();
 
+function Greetings(){
+    //const a = new Date();
+    const hour = time.getHours();
 
-// ============Attributs in JSX==============
-ReactDOM.render(
-    <>
-        <h1 contentEditable="true" className="heading">{`Editable content--Hello, My name is ${fname}`}</h1>
-        <div className="img_div">
-        <a href={link} target="_blank">
-            <img src="https://picsum.photos/seed/picsum/200/300"  alt="image1"/>
-
-            <img src={img2} alt="image2" />
-            <img src={img3} alt="image3" />
-        </a>
-        </div>
-    </>
-    ,document.getElementById("root")
-);
-
-//============inline css===========
-
+    if (hour >= 1 && hour <= 11)
+    {
+        return "Good Morning";
+    }
+    else if (hour >= 12 && hour <= 19)
+    {
+        return "Good Afternoon";
+    }
+    else{
+        return "Good Night";
+    }
+}
 
 ReactDOM.render(
     <>
-        <h1 style={{ color : '#fa9191',textTransform : 'capitalize', textAlign:'center'}}>Hello, My name is {fname}</h1>
-        <div className="img_div">
-        <a href={link} target="_blank">
-            <img src="https://picsum.photos/seed/picsum/200/300"  alt="image1"/>
-
-            <img src={img2} alt="image2" />
-            <img src={img3} alt="image3" />
-        </a>
-        </div>
-    </>
-    ,document.getElementById("root")
+    <ul  className="hello">
+        <li><h1>Hello Sir,</h1></li>
+        <li className="greet"><h1><Greetings /></h1></li>
+    </ul>
+    </>,
+    document.getElementById("root")
 );
+*/
+// =================== my way ends =========================
 
+let curDate = new Date();
+curDate = curDate.getHours();
+let greeting = '';
 
-// ====Internal CSS ====
-const heading = {
-    color: 'red',
-    textAlign: 'center',
-    textTransform: 'capitalize',
-    fontWeight: 'bold',
-    textShadow: '0px 2px 4px #ffe9c5',
-    margin: '50px 0',
-    fontFamily: 'Neonderthaw, cursive'
-  }
+const cssStyle = {};
 
-  ReactDOM.render(
+if (curDate >= 1 && curDate <= 11)
+{
+    greeting = "Good Morning";
+    cssStyle.color = 'green';
+} 
+else if (curDate >= 12 && curDate <= 19)
+{
+    greeting =  "Good Afternoon";
+    cssStyle.color = 'Orange';
+} 
+else{
+    greeting =  "Good Night";
+    cssStyle.color = 'black';
+}
+
+ReactDOM.render(
     <>
-        <h1 style={heading}>Hello, My name is {fname}</h1>
-        <div className="img_div">
-        <a href={link} target="_blank">
-            <img src="https://picsum.photos/seed/picsum/200/300"  alt="image1"/>
-
-            <img src={img2} alt="image2" />
-            <img src={img3} alt="image3" />
-        </a>
-        </div>
-    </>
-    ,document.getElementById("root")
+    <div>
+    <h1>Hello Sir, <span style={cssStyle}> {greeting} </span></h1>
+    </div>
+    </>,
+    document.getElementById("root")
 );
+

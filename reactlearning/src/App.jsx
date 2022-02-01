@@ -1,34 +1,20 @@
-import React from "react";
+const youtuber = "tony";
+const favprogram = "ozark";
 
-let curDate = new Date();
-curDate = curDate.getHours();
-let greeting = '';
-
-const cssStyle = {};
-
-if (curDate >= 1 && curDate <= 11)
-{
-    greeting = "Good Morning";
-    cssStyle.color = 'green';
-} 
-else if (curDate >= 12 && curDate <= 19)
-{
-    greeting =  "Good Afternoon";
-    cssStyle.color = 'Orange';
-} 
-else{
-    greeting =  "Good Night";
-    cssStyle.color = 'black';
+function myName(){
+    let chName = '';
+    return (chName = "stark");
 }
 
-function App(){
-    return (
-        <>
-            <div>
-                <h1>Hello Sir, <span style={cssStyle}> {greeting} </span></h1>
-            </div>
-        </>
-    );
+function myNames(){
+    let chName1  = "stark1";
+    return (chName1);
 }
 
-export default App;
+export default youtuber; // default export,which can be called as different name aswell Ex. name
+//only one default export is allowed in react.
+
+//all others will be defined and called as same as written here/.
+// all other export can be called in one export
+export {favprogram, myName, myNames}
+// or you can use * to get everything as an object

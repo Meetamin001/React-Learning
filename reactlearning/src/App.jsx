@@ -1,20 +1,18 @@
-const youtuber = "tony";
-const favprogram = "ozark";
+import React from "react";
+import * as Calc from "./Calc";
 
-function myName(){
-    let chName = '';
-    return (chName = "stark");
+function App() {
+    return(
+        <>
+            <ul>
+                <li>Sum: {Calc.add(30, 15) } </li>
+                <li>Sub: {Calc.sub(30, 15) }</li>
+                <li>Mult: { Calc.mult(30, 15) } </li>
+                <li>Div: {Calc.div(7, 3) }</li>
+                
+            </ul>
+        </>
+    );
 }
 
-function myNames(){
-    let chName1  = "stark1";
-    return (chName1);
-}
-
-export default youtuber; // default export,which can be called as different name aswell Ex. name
-//only one default export is allowed in react.
-
-//all others will be defined and called as same as written here/.
-// all other export can be called in one export
-export {favprogram, myName, myNames}
-// or you can use * to get everything as an object
+export default App;

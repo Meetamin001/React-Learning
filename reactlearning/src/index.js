@@ -1,8 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Card from "./Cards";
+import "./index.css";
+//import Card from "./Cards";
+//import Sdata from "./Sdata";
+import App from "./App";
+
 
 /* =============== 1 function but different attributes==========
+==================without props=========================
 function Card() {
     return (
         <>
@@ -40,8 +45,10 @@ ReactDOM.render(
 
 // =================Use of props==========
 
-ReactDOM.render(
+/* ReactDOM.render(
     <>
+    <h1 className="heading_style">Top 5 Netflix series in 2020</h1>
+
     <Card
         //image tag src
         imgscr ="https://resizing.flixster.com/Xr7qz5Sc9FbC2Ed_znk1QdK-TKw=/ems.ZW1zLXByZC1hc3NldHMvdHZzZXJpZXMvUlRUVjI2NjgyOS53ZWJw"
@@ -72,4 +79,175 @@ ReactDOM.render(
     />
     </>     
 ,document.getElementById("root")
+); */
+
+//========================using Array==========================
+/* console.log(Sdata[0]);
+console.log(Sdata[0].sname);
+ReactDOM.render(
+    <>
+    <h1 className="heading_style">Top 5 Netflix series in 2020</h1>
+
+    <Card
+        imgscr ={Sdata[0].imgscr}
+        sname = {Sdata[0].sname}
+        title = {Sdata[0].title}
+        link = {Sdata[0].link}
+    />
+    <Card 
+        imgscr ={Sdata[1].imgscr}
+        sname = {Sdata[1].sname}
+        title = {Sdata[1].title}
+        link = {Sdata[1].link}
+    />
+    <Card 
+        imgscr ={Sdata[2].imgscr}
+        sname = {Sdata[2].sname}
+        title = {Sdata[2].title}
+        link = {Sdata[2].link}
+    />
+    <Card 
+        imgscr ={Sdata[3].imgscr}
+        sname = {Sdata[3].sname}
+        title = {Sdata[3].title}
+        link = {Sdata[3].link}
+    />
+    <Card 
+        imgscr ={Sdata[4].imgscr}
+        sname = {Sdata[4].sname}
+        title = {Sdata[4].title}
+        link = {Sdata[4].link}
+    />
+    </>     
+,document.getElementById("root")
+); */
+
+/* 
+// =================using MAP function ================
+/* function ncard(value, indexx, array(which array)) */
+/* function ncard(val){
+    console.log(val);
+    return(
+        <Card
+            imgscr ={val.imgscr}
+            sname = {val.sname}
+            title = {val.title}
+            link = {val.link}
+        />
+    );
+}
+ */
+// ReactDOM.render(
+//     <>
+//     <h1 className="heading_style">Top 5 Netflix series in 2020</h1>
+// {/* 
+//     <Card
+//         imgscr ={Sdata[0].imgscr}
+//         sname = {Sdata[0].sname}
+//         title = {Sdata[0].title}
+//         link = {Sdata[0].link}
+//     /> */}
+
+//     {/* array.map(function (currentValue, index, arr), thisValue)  */}
+//     {Sdata.map(ncard)}
+//     </>     
+// ,document.getElementById("root")
+// );
+
+/* can also replce {Sdata.map(ncard)}... this way */
+/* 
+{Sdata.map(function ncard(val)
+                        {
+                            return(
+                                <Card
+                                    imgscr ={val.imgscr}
+                                    sname = {val.sname}
+                                    title = {val.title}
+                                    link = {val.link}
+                                />
+                            );
+                        }
+        )
+}
+*/
+
+// =================using MAP & FAT Arrow function ================
+
+//...normal function.....
+/* 
+    function myName(a,b){
+        return a+b;
+} 
+*/
+//.......fat & arrow function..
+/*
+    const myName = (a,b) => {
+        return a+b;
+    }
+*/
+//......another easy way.....
+/*  
+    const myName = (a,b) => a+b;
+*/
+/* 
+ReactDOM.render(
+    <>
+        <h1 className="heading_style">Top 5 Netflix series in 2020</h1>
+
+        {// 
+            {Sdata.map(const ncard = (val) => {...} )} dont need to give function Name
+        //}
+        {Sdata.map((val, index) => {
+            console.log(index); // it will show index of array 0,1,2,..
+            return (
+                <Card
+                    key={val.id} // must need key(unique) in map function.
+                    imgscr={val.imgscr}
+                    sname={val.sname}
+                    title={val.title}
+                    link={val.link}
+                />
+            );
+        }
+        )
+        }
+    </>
+    , document.getElementById("root")
 );
+ */
+
+//=============   =============================
+
+/* 
+ReactDOM.render(
+    <>
+        <h1 className="heading_style">Top 5 Netflix series in 2020</h1>
+
+        {Sdata.map((val, index) => {
+            return (
+                <Card
+                    key={val.id} // must need key(unique) in map function.
+                    imgscr={val.imgscr}
+                    sname={val.sname}
+                    title={val.title}
+                    link={val.link}
+                />
+            );
+        }
+        )
+        }
+    </>
+    , document.getElementById("root")
+); 
+*/
+
+//======================Final Code============
+
+ReactDOM.render(
+    <App />
+    , document.getElementById("root")
+);
+
+
+
+

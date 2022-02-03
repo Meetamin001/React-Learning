@@ -1,48 +1,45 @@
 import React, { useState } from "react";
 
-//let count = 0; because we will this variable define in hooks
-
 const App = () => {
-    // Hooks has to be at TOP of react function
-    const state = useState(); //--code works without this aswell,no idea!
-    //console.log(state);
+    const newTime = new Date().toLocaleTimeString();
+    const [ctime, setCTime] = useState(newTime);
 
-    //const [state] = useState(); array Destructure
-    const [count, setCount] = useState(0); //count is variable,0 initial val, setCount is Function
-    const IncNum = () => {
-        //console.log("clicked" + count++);
-        setCount(count + 1);
+    const UpdateTime = () => {
+        const newCTime = new Date().toLocaleTimeString();
+        // you can use newTime = new Date().toLocaleTimeString(); as well and pass newTime
+        setCTime(newCTime);
     };
 
     return (
         <>
-            <h1>{ count }</h1>
-            <button onClick={ IncNum }> Click Me! </button>
+            <h1> { ctime } </h1>
+            <button onClick={ UpdateTime }>Click Me!</button>
         </>
     );
-
 };
-
 
 export default App;
 
-
 /* 
-===============Array Destructure============
-    const name = ['ab', 'cd', 'ef']; //This is array
+==================My Way=================
+import React, { useState } from "react";
 
-    const [ab, cd, ef] = name;  --values of name array will be assigned to variable ab, cd, ef--
-    console.log(ab); //output will be ab---same value you van get by name[0]
+const App = () => {
+    const time = new Date();
 
-    const [name1, name2, name3] = name;
-    console.log(name3); //putput will be ef---same name[3]
- */
+    const [displayTime, DisplayCurrTime] = useState(time.toLocaleTimeString());
+    const SetTime = () => {
+        const time = new Date();
+        DisplayCurrTime(time.toLocaleTimeString());
+    };
 
-/* 
-===================What is useState===============
+    return (
+        <>
+            <h1> { displayTime } </h1>
+            <button onClick={ SetTime }>Click Me!</button>
+        </>
+    );
+};
 
-use state is an function which return an array with 2 values--
-
--- [undefined, f] ==> [state Object( returns current data), updated function(returns updated data)]
-
+export default App;
 */

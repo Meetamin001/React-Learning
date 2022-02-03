@@ -9,6 +9,8 @@ const App = () => {
         // you can use newTime = new Date().toLocaleTimeString(); as well and pass newTime
         setCTime(newCTime);
     };
+    
+    setInterval(UpdateTime, 1000); //every 1 second interval(1000 milisecond) UpdateTime function will be called
 
     return (
         <>

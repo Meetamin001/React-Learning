@@ -1,45 +1,33 @@
 import React, { useState } from "react";
 
 const App = () => {
-    const newTime = new Date().toLocaleTimeString();
-    const [ctime, setCTime] = useState(newTime);
 
-    const UpdateTime = () => {
-        const newCTime = new Date().toLocaleTimeString();
-        // you can use newTime = new Date().toLocaleTimeString(); as well and pass newTime
-        setCTime(newCTime);
+    const [displayData, updateDisplayData] = useState("Click Me!");
+    const [bg, updateBgColor] = useState("blue");
+
+    const cngEvent = () => {
+        let setDisplayData = "Clicked Data";
+        updateDisplayData(setDisplayData);
+
+        let bg = "red";
+        updateBgColor(bg);
+    };
+
+    const dblClkEvent = () => {
+        let setDisplayData = "Double Clicked Data";
+        updateDisplayData(setDisplayData);
+
+        let bg = "yellow";
+        updateBgColor(bg);
     };
 
     return (
         <>
-            <h1> { ctime } </h1>
-            <button onClick={ UpdateTime }>Click Me!</button>
+            <div style={ { backgroundColor: bg } } >
+                <button onClick={ cngEvent } onDoubleClick={ dblClkEvent }>{ displayData }</button>
+            </div>
         </>
     );
 };
 
 export default App;
-
-/* 
-==================My Way=================
-import React, { useState } from "react";
-
-const App = () => {
-    const time = new Date();
-
-    const [displayTime, DisplayCurrTime] = useState(time.toLocaleTimeString());
-    const SetTime = () => {
-        const time = new Date();
-        DisplayCurrTime(time.toLocaleTimeString());
-    };
-
-    return (
-        <>
-            <h1> { displayTime } </h1>
-            <button onClick={ SetTime }>Click Me!</button>
-        </>
-    );
-};
-
-export default App;
-*/

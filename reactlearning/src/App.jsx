@@ -1,23 +1,58 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useState } from "react";
 
 const App = () => {
-    const [fname, setFName] = useState();
-    const [lname, setLName] = useState();
-    const [fullname, setFullName] = useState();
+    const [fullName, setFullName] = useState({
+        fname: '',
+        lname: '',
+        email: '',
+        phone: '',
+    });
 
-    const input_Fn_Event = (event) => {
+    const inputEvent = (event) => {
         console.log(event.target.value);
-        setFName(event.target.value);
-    };
-    const input_Ln_Event = (event) => {
-        console.log(event.target.value);
-        setLName(event.target.value);
+        console.log(event.target.name);
+
+        //const value = event.target.value;
+        //const name = event.target.name;
+        //object destructuring
+        const { value, name } = event.target;
+
+        setFullName((preValue) => {
+            if (name === "fName") {
+                return {
+                    fname: value,
+                    lname: preValue.lname,
+                    email: preValue.email,
+                    phone: preValue.phone,
+                };
+            } else if (name === "lName") {
+                return {
+                    fname: preValue.fname,
+                    lname: value,
+                    email: preValue.email,
+                    phone: preValue.phone,
+                };
+            } else if (name === "email") {
+                return {
+                    fname: preValue.fname,
+                    lname: preValue.lname,
+                    email: value,
+                    phone: preValue.phone,
+                };
+            } else if (name === "phone") {
+                return {
+                    fname: preValue.fname,
+                    lname: preValue.lname,
+                    email: preValue.email,
+                    phone: value,
+                };
+            }
+        });
     };
 
     const on_Submit = (event) => {
-        event.preventDefault(); // kavascript inbuilt method to data show written in form tag
-        setFullName(fname + " " + lname);
+        event.preventDefault();
+        alert("form submitted");
     };
 
     return (
@@ -25,18 +60,34 @@ const App = () => {
             <div>
                 <form onSubmit={ on_Submit }>
                     <div>
-                        <h1>Hello, { fullname }</h1>
+                        <h1>Hello,{ fullName.fname } { fullName.lname }</h1>
+                        <p>{ fullName.email }</p>
+                        <p>{ fullName.phone }</p>
                         <input
                             type="text" placeholder="Enter First Name"
-                            onChange={ input_Fn_Event } //for button we write onClick even same for input onChaange need to be used
-                            value={ fname }  //single source of truth. same variable name use more than 3 times
+                            name="fName"
+                            onChange={ inputEvent }
+                            value={ fullName.fname }
                         />
                         <input
                             type="text" placeholder="Enter Last Name"
-                            onChange={ input_Ln_Event }
-                            value={ lname }
+                            name="lName"
+                            onChange={ inputEvent }
+                            value={ fullName.lname }
                         />
-                        {/* <button onClick={ onSubmit } >Click Me!</button> */ }
+                        <input
+                            type="email" placeholder="Enter Your Email"
+                            name="email"
+                            onChange={ inputEvent }
+                            value={ fullName.email }
+                            autoCapitalize="off"
+                        />
+                        <input
+                            type="number" placeholder="Enter Phone Number"
+                            name="phone"
+                            onChange={ inputEvent }
+                            value={ fullName.phone }
+                        />
                         <button type="submit">Submit</button>
                     </div>
                 </form>

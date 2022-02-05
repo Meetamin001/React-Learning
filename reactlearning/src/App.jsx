@@ -16,7 +16,8 @@ const App = () => {
     };
 
     const on_Submit = (event) => {
-        event.preventDefault(); // kavascript inbuilt method to data show written in form tag
+        event.preventDefault(); // form has default behavior of submiting daata on other page
+        // javascript inbuilt method which prevent default behaviour
         setFullName(fname + " " + lname);
     };
 

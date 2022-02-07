@@ -18,7 +18,14 @@ const App = () => {
         const { value, name } = event.target;
 
         setFullName((preValue) => {
-            if (name === "fName") {
+            // console.log(preValue);
+            // console.log(preValue.fname);
+
+            return {
+                ...preValue,
+                [name]: value,
+            };
+            /* if (name === "fName") {
                 return {
                     fname: value,
                     lname: preValue.lname,
@@ -46,7 +53,7 @@ const App = () => {
                     email: preValue.email,
                     phone: value,
                 };
-            }
+            } */
         });
     };
 
@@ -65,13 +72,13 @@ const App = () => {
                         <p>{ fullName.phone }</p>
                         <input
                             type="text" placeholder="Enter First Name"
-                            name="fName"
+                            name="fname"
                             onChange={ inputEvent }
                             value={ fullName.fname }
                         />
                         <input
                             type="text" placeholder="Enter Last Name"
-                            name="lName"
+                            name="lname"
                             onChange={ inputEvent }
                             value={ fullName.lname }
                         />
